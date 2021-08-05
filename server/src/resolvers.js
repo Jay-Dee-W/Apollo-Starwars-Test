@@ -1,6 +1,8 @@
 module.exports = {
-    Query: {
-      people: (_, __, { dataSources }) =>
-        dataSources.peopleAPI.getAllPeople()
-    }
-  };
+  Query: {
+    people: (_, { page }, { dataSources }) =>
+      dataSources.peopleAPI.getAllPeople({ page: page }),
+    person: (_, { url }, { dataSources }) =>
+      dataSources.peopleAPI.getPerson({ url: url })
+  },
+};

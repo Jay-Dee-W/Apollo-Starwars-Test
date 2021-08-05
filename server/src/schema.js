@@ -7,9 +7,10 @@ type Person {
     height: String
     mass: String
     gender: String
+    homeworld: String
 }
 type Query {
-    people: [Person]
+    people(page: Int): [Person]
     person(url: String): Person
 }
 `;

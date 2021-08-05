@@ -6,20 +6,31 @@ class PeopleAPI extends RESTDataSource {
         this.baseURL = 'https://swapi.dev/api/';
     }
 
-    async getAllPeople() {
-         const response = await this.get(`people`)
-         console.log(response)
-        return Array.isArray(response.result) ?
-        response.result.map(person => this.peopleReducer(person)) :
-        [];
+    async getAllPeople(page) {
+
+        page = page.page
+        const response = await this.get(`people/?page=${page}`)
+
+        return Array.isArray(response.results) ?
+            response.results.map(person => this.peopleReducer(person)) :
+            [];
     }
-    peopleReducer(person){
-        return{
+    async getPerson(url) {
+
+        url = url.url
+        console.log(url)
+        const response = await this.get(url)
+        console.log(response)
+        return this.peopleReducer(response) 
+    }
+    peopleReducer(person) {
+        return {
             url: person.url,
             name: person.name,
             height: person.height,
             mass: person.mass,
-            gender: person.gender
+            gender: person.gender,
+            homeworld: person.homeworld
         }
     }
 
