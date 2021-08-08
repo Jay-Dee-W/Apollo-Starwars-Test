@@ -4,36 +4,29 @@ import {
   NormalizedCacheObject,
   ApolloProvider
 } from '@apollo/client';
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import Pages from './pages';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import Pages from './pages/index';
 import { cache } from './cache';
+import { AppStateProvider } from './store/pageCountStore';
+import injectStyles from './styles';
+
+injectStyles();
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
   uri: 'http://localhost:4000/graphql',
 });
- 
-client
-  .query({
-    query: gql`
-      query TestQuery {
-        launch(id: 56) {
-          id
-          mission {
-            name
-          }
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
 
-// ReactDOM.render(
-//   <ApolloProvider client={client}>
-//     <Pages />
-//   </ApolloProvider>,
-//   document.getElementById('root')
-// );
+
+ReactDOM.render(
+
+  <ApolloProvider client={client}>
+    <AppStateProvider>
+      <Pages />
+    </AppStateProvider>
+  </ApolloProvider>,
+  document.getElementById('root')
+);
 

@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { Fragment, useContext } from 'react';
 import { RouteComponentProps } from '@reach/router';
-import { gql } from '@apollo/client'
+import { gql, useQuery } from '@apollo/client';
+import PersonCard from '../components/PersonCard'
+import Footer from './Footer'
 
-interface PeopleProps extends RouteComponentProps {
-
+export const get_AllPeople = gql`
+query getAllPeople($page: Int) {
+  people(page: $page) {
+    name
+  }
 }
+`;
+interface PeopleProps extends RouteComponentProps {
+  page: Number
+}
+ 
+const People: React.FC<PeopleProps> = ({ page }) => {
+  // let {pageCount} = useContext(AppContext)
+  // console.log(page)
+  const {
+    data,
+    loading,
+    error
+  } = useQuery(get_AllPeople, { variables: { page: page } })
 
-const People: React.FC<PeopleProps> = () => {
-  return <div />;
+  if (loading) return <p>Loading...</p>;
+  if (error) { console.log(error); return <p>Error</p> };
+  if (!data) {
+    return <p>Not found</p>
+  } else {
+    // console.log(data)
+  }
+  return <Fragment >
+    {data.people &&
+      data.people.map((person: any) =>
+       <PersonCard key={person.name} Person={person} />
+      )}
+            <Footer />
+  </Fragment>;
 }
 
 export default People;
