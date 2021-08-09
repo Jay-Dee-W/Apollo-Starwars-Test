@@ -14,8 +14,7 @@ import image8 from '../assets/images/image8.jpg';
 import image9 from '../assets/images/image9.jpg';
 import image0 from '../assets/images/image0.jpg';
 import { unit } from '../styles';
-import { NONAME } from 'node:dns';
-// import * as LaunchTileTypes from '../pages/__generated__/LaunchTile';
+
 
 const backgrounds = [image1, image2, image3,image4, image5, image6,image7, image8, image9, image0];
 export function getBackgroundImage(id: Number) {

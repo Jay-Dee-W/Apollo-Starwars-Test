@@ -12,17 +12,13 @@ import Person from "./Person";
 
 export default function App() {
   let { appState } = useContext(AppContext)
-  console.log('pageNumber:', appState.pageCount)
+
   return (
     <Fragment>
-    {/* <AppStateProvider> */}
       <Router primary={false} component={Fragment}>
         <People path="/" page={appState.pageCount} />
-        <Person path="person/:$name" /> 
+        <Person path="person/:$name" />
       </Router>
-
-    {/* </AppStateProvider> */}
-  
-  </Fragment>
+    </Fragment>
   );
-  }
+}

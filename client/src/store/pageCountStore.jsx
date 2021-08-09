@@ -11,9 +11,15 @@ export function AppStateProvider(props) {
     let reducer = (state, action) => {
         switch (action) {
             case 'increment':
-                    return {pageCount: state.pageCount + 1 }  
+               
+                return (state.pageCount > 0 && state.pageCount < 9) ?
+                    { pageCount: state.pageCount + 1 } :
+                    { pageCount: state.pageCount }
             case 'decrement':
-                return { pageCount: state.pageCount - 1}
+                
+                return (state.pageCount > 1 && state.pageCount < 10) ?
+                    { pageCount: state.pageCount - 1 } :
+                    { pageCount: state.pageCount }
             default:
                 throw new Error('Wrong Action')
         }

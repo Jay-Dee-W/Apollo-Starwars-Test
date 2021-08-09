@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { gql, useQuery } from '@apollo/client';
 import PersonCard from '../components/PersonCard'
@@ -14,10 +14,9 @@ query getAllPeople($page: Int) {
 interface PeopleProps extends RouteComponentProps {
   page: Number
 }
- 
+
 const People: React.FC<PeopleProps> = ({ page }) => {
-  // let {pageCount} = useContext(AppContext)
-  // console.log(page)
+
   const {
     data,
     loading,
@@ -28,15 +27,14 @@ const People: React.FC<PeopleProps> = ({ page }) => {
   if (error) { console.log(error); return <p>Error</p> };
   if (!data) {
     return <p>Not found</p>
-  } else {
-    // console.log(data)
   }
+
   return <Fragment >
     {data.people &&
       data.people.map((person: any) =>
-       <PersonCard key={person.name} Person={person} />
+        <PersonCard key={person.name} Person={person} />
       )}
-            <Footer />
+    <Footer />
   </Fragment>;
 }
 

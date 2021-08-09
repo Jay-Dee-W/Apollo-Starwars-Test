@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { gql, useQuery } from '@apollo/client';
 
@@ -13,7 +13,7 @@ import image7 from '../assets/images/image7.jpg';
 import image8 from '../assets/images/image8.jpg';
 import image9 from '../assets/images/image9.jpg';
 import image0 from '../assets/images/image0.jpg';
-import { unit } from '../styles';
+
 const backgrounds = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image0];
 export function getBackgroundImage(id: Number) {
   return `url(${backgrounds[Number(id) % backgrounds.length]})`;
@@ -49,9 +49,7 @@ const Person: React.FC<PersonProps> = ({ $name }) => {
   if (error) { console.log(error); return <p>Error</p> };
   if (!data) {
     return <p>Not found</p>
-  } else {
-    console.log(data)
-  }
+  } 
   let id = Math.floor(Math.random() * 10) + 1
   return (
 
@@ -59,10 +57,8 @@ const Person: React.FC<PersonProps> = ({ $name }) => {
       style={{
         height: '100vh',
         textAlign: "center",
-        // borderRadius: 7,
         color: 'white',
         backgroundSize: 'cover',
-        // repeat: "none",
         backgroundPosition: 'center',
         backgroundImage: getBackgroundImage(id),
       }} >

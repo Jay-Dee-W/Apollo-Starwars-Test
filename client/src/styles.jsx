@@ -10,7 +10,7 @@ export const colors = {
   text: '#343c5a',
   textSecondary: '#747790'
 };
-
+ // eslint-disable-next-line 
 export default () => injectGlobal({
   [['html', 'body']]: {
     height: '100%',

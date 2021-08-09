@@ -1,10 +1,9 @@
 import { useContext } from 'react'
-// import './style.css'
 import AppContext from '../store/pageCountStore'
 
 export default function Counter() {
     let { appState, dispatch } = useContext(AppContext)
-    // console.log('appState:', appState)
+
     return (
         <div >
            <h2>Select Page </h2>

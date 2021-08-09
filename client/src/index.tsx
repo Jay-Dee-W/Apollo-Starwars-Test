@@ -1,12 +1,11 @@
 import {
   ApolloClient,
-  gql,
   NormalizedCacheObject,
   ApolloProvider
 } from '@apollo/client';
-import React from 'react';
+
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import Pages from './pages/index';
 import { cache } from './cache';
 import { AppStateProvider } from './store/pageCountStore';
