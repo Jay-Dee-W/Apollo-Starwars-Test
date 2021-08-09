@@ -8,7 +8,6 @@ jobs:
     steps:
       - checkout
       - run: cd client && npm ci
-      - run: cd client && npx apollo client:check
 
       - run: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
@@ -30,7 +29,6 @@ jobs:
           background: true
 
       - run: sleep 5
-      - run: cd server && npx apollo service:check
 
       - run: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
