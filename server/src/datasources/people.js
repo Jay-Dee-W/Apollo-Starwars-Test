@@ -15,7 +15,10 @@ class PeopleAPI extends RESTDataSource {
 
     async getHomewolrd(url) {
         const response = await this.get(url)
+        return response.name
+
     }
+
     async getAllPeople(page) {
         page=page.page
         const response = await this.get(`people/?page=${page}`)
@@ -33,7 +36,7 @@ console.log(person)
             height: person.height,
             mass: person.mass,
             gender: person.gender,
-            homeworld: person.homeworld
+            homeworld: this.getHomewolrd(person.homeworld)
             
         }
     }

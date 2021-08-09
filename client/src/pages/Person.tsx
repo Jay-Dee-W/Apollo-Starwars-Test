@@ -68,6 +68,7 @@ const Person: React.FC<PersonProps> = ({ $name }) => {
           <h2>Gender: {data.person.gender}</h2>
           <h2>Height: {data.person.height}</h2>
           <h2>Mass: {data.person.mass} </h2>
+          <h3>Homeworld: {data.person.homeworld}</h3>
           
         </div>
       }
